@@ -4,10 +4,10 @@ node {
 
     env.DOCKER_API_VERSION="1.23"
     appName = "default/flask-app"
-    registryHost = "icptt:8500/"
+    registryHost = "icptt.icp:8500/"
     imageName = "${registryHost}${appName}:${env.BUILD_ID}"
     env.BUILDIMG=imageName
-    docker.withRegistry('https://icptt:8500/', 'docker'){
+    docker.withRegistry('https://icptt.icp:8500/', 'docker'){
     stage "Build"
 
         def pcImg = docker.build("icptt:8500/default/flask-app:${env.BUILD_ID}", "-f Dockerfile.ppc64le .")
